@@ -19,7 +19,6 @@
 
 - has_many :items
 - has_many :buyer
-- has_many :address
 
 ## items テーブル
 
@@ -27,7 +26,8 @@
 | ------------| ------ | ----------- |
 | name        | string | null: false |
 | explanation | string | null: false |
-| details     | string | null: false |
+| category    | string | null: false |
+| status      | string | null: false |
 | delivery    | string | null: false |
 | price       | string | null: false |
 | user_id     | string | null: false |
@@ -35,36 +35,30 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :buyer
-- belongs_to :address
+- has_one :buyer
 
 ## buyer テーブル
 
-| Column  | Type   | Options     |
-| ------- | ------ | ----------- |
-| user_id | string | null: false |
-| item_id | string | null: false |
+| Column  | Type       | Options                       |
+| ------- | ---------- | ----------------------------- |
+| user_id | references | null: false, foreign_key: true|
+| item_id | references | null: false, foreign_key: true|
 
 ### Association
 
-- has_many :items
+- belongs_to :items
 - belongs_to :user
-- has_many :address
 
 ## address テーブル
 
-| Column  | Type   | Options     |
-| ------- | ------ | ----------- |
-| user_id | string | null: false |
-| item_id | string | null: false |
-| address | string | null: false |
-| phone   | string | null: false |
+| Column      | Type       | Options     |
+| ----------- | ---------- | ----------- |
+| address     | string     | null: false |
+| address_num | string     |null: false  |
+| phone       | string     | null: false |
 
 ### Association
 
-- has_one :item
-- belongs_to :user
-- belongs_to :buyer
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
