@@ -22,17 +22,17 @@
 
 ## items テーブル
 
-| Column                | Type       | Options                        |
-| ----------------------| ---------- | ------------------------------ |
-| name                  | string     | null: false                    |
-| explanation           | string     | null: false                    |
-| category              | string     | null: false                    |
-| status                | string     | null: false                    |
-| delivery_cost         | string     | null: false                    |
-| delivery_origin       | string     | null: false                    |
-| delivery_days         | string     | null: false                    |
-| price                 | string     | null: false                    |
-| user_id               | references | null: false, foreign_key: true |
+| Column                   | Type       | Options                        |
+| -------------------------| ---------- | ------------------------------ |
+| name_id                  | integer    | null: false                    |
+| explanation_id           | integer    | null: false                    |
+| category_id              | integer    | null: false                    |
+| status_id                | integer    | null: false                    |
+| delivery_cost_id         | integer    | null: false                    |
+| delivery_origin_id       | integer    | null: false                    |
+| delivery_days_id         | integer    | null: false                    |
+| price_id                 | integer    | null: false                    |
+| user_id                  | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -48,20 +48,20 @@
 
 ### Association
 
-- belongs_to :items
+- belongs_to :item
 - belongs_to :user
 - has_one :address
 
 ## address テーブル
 
-| Column              | Type       | Options     |
-| ------------------- | ---------- | ----------- |
-| address_num         | string     | null: false |
-| address_prefectures | string     |null: false  |
-| address_city        | string     | null: false |
-| address_area        | string     | null: false |
-| building_name       | string     |             |
-| phone               | string     | null: false |
+| Column         | Type    | Options     |
+| -------------- | ------- | ----------- |
+| num            | string  | null: false |
+| prefectures_id | integer |null: false  |
+| city           | string  | null: false |
+| area           | strin   | null: false |
+| building       | strin   |             |
+| phone          | string  | null: false |
 
 ### Association
 - belongs_to :buyer
