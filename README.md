@@ -24,15 +24,15 @@
 
 | Column                   | Type       | Options                        |
 | -------------------------| ---------- | ------------------------------ |
-| name_id                  | integer    | null: false                    |
-| explanation_id           | integer    | null: false                    |
+| name                     | integer    | null: false                    |
+| explanation              | text       | null: false                    |
 | category_id              | integer    | null: false                    |
 | status_id                | integer    | null: false                    |
 | delivery_cost_id         | integer    | null: false                    |
 | delivery_origin_id       | integer    | null: false                    |
 | delivery_days_id         | integer    | null: false                    |
-| price_id                 | integer    | null: false                    |
-| user_id                  | references | null: false, foreign_key: true |
+| price                    | integer    | null: false                    |
+| user                     | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -43,8 +43,9 @@
 
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
-| user_id | references | null: false, foreign_key: true|
-| item_id | references | null: false, foreign_key: true|
+| user    | references | null: false, foreign_key: true|
+| item    | references | null: false, foreign_key: true|
+| address | references | null: false, foreign_key: true|
 
 ### Association
 
