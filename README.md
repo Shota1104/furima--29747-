@@ -22,15 +22,17 @@
 
 ## items テーブル
 
-| Column      | Type   | Options     |
-| ------------| ------ | ----------- |
-| name        | string | null: false |
-| explanation | string | null: false |
-| category    | string | null: false |
-| status      | string | null: false |
-| delivery    | string | null: false |
-| price       | string | null: false |
-| user_id     | string | null: false |
+| Column                | Type       | Options                        |
+| ----------------------| ---------- | ------------------------------ |
+| name                  | string     | null: false                    |
+| explanation           | string     | null: false                    |
+| category              | string     | null: false                    |
+| status                | string     | null: false                    |
+| delivery_cost         | string     | null: false                    |
+| delivery_origin       | string     | null: false                    |
+| delivery_days         | string     | null: false                    |
+| price                 | string     | null: false                    |
+| user_id               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -48,17 +50,21 @@
 
 - belongs_to :items
 - belongs_to :user
+- has_one :address
 
 ## address テーブル
 
-| Column      | Type       | Options     |
-| ----------- | ---------- | ----------- |
-| address     | string     | null: false |
-| address_num | string     |null: false  |
-| phone       | string     | null: false |
+| Column              | Type       | Options     |
+| ------------------- | ---------- | ----------- |
+| address_num         | string     | null: false |
+| address_prefectures | string     |null: false  |
+| address_city        | string     | null: false |
+| address_area        | string     | null: false |
+| building_name       | string     |             |
+| phone               | string     | null: false |
 
 ### Association
-
+- belongs_to :buyer
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
