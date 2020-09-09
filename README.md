@@ -4,24 +4,27 @@
 
 ## users テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------  | ----------- |
-| nickname | string  | null: false |
-| name     | string  | null: false |
-| email    | string  | null: false |
-| password | string  | null: false |
-| birthday | integer | null: falde |
+| Column          | Type    | Options     |
+| ----------------| ------  | ----------- |
+| nickname        | string  | null: false |
+| last_name       | string  | null: false |
+| first_name      | string  | null: false |
+| kana_last_name  | string  | null: false |
+| kana_first_name | string  | null: false |
+| email           | string  | null: false |
+| password        | string  | null: false |
+| birthday        | date    | null: falde |
 
 ### Association
 
 - has_many :items
-- has_one :buyer
+- has_many :buyer
+- has_many :address
 
 ## items テーブル
 
 | Column      | Type   | Options     |
 | ------------| ------ | ----------- |
-| image       | string | null: false |
 | name        | string | null: false |
 | explanation | string | null: false |
 | details     | string | null: false |
@@ -31,22 +34,37 @@
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - belongs_to :buyer
+- belongs_to :address
 
 ## buyer テーブル
 
-| Column   | Type    | Options     |
-| -------- | ------- | ----------- |
-| card     | integer | null: false |
-| adress   | string  | null: false |
-| phone    | integer | null: false |
-| user_id  | string  | null: false |
+| Column  | Type   | Options     |
+| ------- | ------ | ----------- |
+| user_id | string | null: false |
+| item_id | string | null: false |
 
 ### Association
 
 - has_many :items
 - belongs_to :user
+- has_many :address
+
+## address テーブル
+
+| Column  | Type   | Options     |
+| ------- | ------ | ----------- |
+| user_id | string | null: false |
+| item_id | string | null: false |
+| address | string | null: false |
+| phone   | string | null: false |
+
+### Association
+
+- has_one :item
+- belongs_to :user
+- belongs_to :buyer
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
