@@ -24,7 +24,7 @@
 
 | Column                   | Type       | Options                        |
 | -------------------------| ---------- | ------------------------------ |
-| name                     | integer    | null: false                    |
+| name                     | string     | null: false                    |
 | explanation              | text       | null: false                    |
 | category_id              | integer    | null: false                    |
 | status_id                | integer    | null: false                    |
@@ -45,7 +45,6 @@
 | ------- | ---------- | ----------------------------- |
 | user    | references | null: false, foreign_key: true|
 | item    | references | null: false, foreign_key: true|
-| address | references | null: false, foreign_key: true|
 
 ### Association
 
@@ -53,16 +52,17 @@
 - belongs_to :user
 - has_one :address
 
-## address テーブル
+## addresses テーブル
 
-| Column         | Type    | Options     |
-| -------------- | ------- | ----------- |
-| num            | string  | null: false |
-| prefectures_id | integer |null: false  |
-| city           | string  | null: false |
-| area           | strin   | null: false |
-| building       | strin   |             |
-| phone          | string  | null: false |
+| Column         | Type       | Options                      |
+| -------------- | ---------- | ---------------------------- |
+| num            | string     | null: false                  |
+| prefectures_id | integer    | null: false                  |
+| city           | string     | null: false                  |
+| area           | strin      | null: false                  |
+| building       | strin      |                              |
+| phone          | string     | null: false                  |
+| buyer          | references |null: false, foreign_key: true|
 
 ### Association
 - belongs_to :buyer
