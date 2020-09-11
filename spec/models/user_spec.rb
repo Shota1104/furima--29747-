@@ -66,20 +66,60 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
+      it "苗字が全角（漢字・ひらがな・カタカナでないと登録出来ない)" do
+        @user.last_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Last name is invalid")
+      end
       it "名前が空では登録出来ない" do
         @user.first_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("First name can't be blank")
+      end
+      it "名前が全角（漢字・ひらがな・カタカナでないと登録出来ない)" do
+        @user.first_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("First name is invalid")
       end
       it "苗字の振り仮名が空では登録出来ない" do
         @user.kana_last_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Kana last name can't be blank")
       end
+      it "苗字の振り仮名がカタカナ以外では登録出来ない" do
+        @user.kana_last_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana last name is invalid")
+      end
+      it "苗字の振り仮名がカタカナ以外では登録出来ない" do
+        @user.kana_last_name = "あああ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana last name is invalid")
+      end
+      it "苗字の振り仮名がカタカナ以外では登録出来ない" do
+        @user.kana_last_name = "亜亜"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana last name is invalid")
+      end
       it "名前の振り仮名が空では登録出来ない" do
         @user.kana_first_name = ""
         @user.valid?
         expect(@user.errors.full_messages).to include("Kana first name can't be blank")
+      end
+      it "名前の振り仮名がカタカナ以外では登録出来ない" do
+        @user.kana_first_name = "aaa"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana first name is invalid")
+      end
+      it "名前の振り仮名がカタカナ以外では登録出来ない" do
+        @user.kana_first_name = "あああ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana first name is invalid")
+      end
+      it "名前の振り仮名がカタカナ以外では登録出来ない" do
+        @user.kana_first_name = "亜亜"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Kana first name is invalid")
       end
       it "誕生日が空では登録出来ない" do
         @user.birthday = ""
