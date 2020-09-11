@@ -2,19 +2,21 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'ユーザー新規登録' do
-    it '新規登録がうまくいくとき' do
-      FactoryBot.build(:user)
+    before do
+      @user = FactoryBot.build(:user)
+    end
+
+    context '新規登録がうまくいくとき' do
       it "nicknameとemail、passwordとpassword_confirmation、名前と振り仮名、誕生日が存在すれば登録できる" do
         expect(@user).to be_valid
       end
       it "passwordが6文字以上であれば登録できる" do
-        @user.nickname = "aaaaaa"
+        @user.password = "Shota1993"
         expect(@user).to be_valid
       end
     end
 
-    it '新規登録がうまくいかないとき' do
-      FactoryBot.build(:user)
+    context '新規登録がうまくいかないとき' do
       it "nicknameが空だと登録できない" do
         @user.nickname = ''
         @user.valid?
@@ -51,22 +53,22 @@ RSpec.describe User, type: :model do
       it "苗字が空では登録出来ない" do
         @user.last_name = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last_name can't be blank")
+        expect(@user.errors.full_messages).to include("Last name can't be blank")
       end
       it "名前が空では登録出来ない" do
         @user.first_name = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include("First_name can't be blank")
+        expect(@user.errors.full_messages).to include("First name can't be blank")
       end
       it "苗字の振り仮名が空では登録出来ない" do
         @user.kana_last_name = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana_Last_name can't be blank")
+        expect(@user.errors.full_messages).to include("Kana last name can't be blank")
       end
       it "名前の振り仮名が空では登録出来ない" do
         @user.kana_first_name = ""
         @user.valid?
-        expect(@user.errors.full_messages).to include("Kana_First_name can't be blank")
+        expect(@user.errors.full_messages).to include("Kana first name can't be blank")
       end
       it "誕生日が空では登録出来ない" do
         @user.birthday = ""
