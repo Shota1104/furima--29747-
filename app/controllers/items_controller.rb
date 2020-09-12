@@ -3,9 +3,15 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = item.new
+    @item = Item.new
   end
 
-  private
+  def create
+    Item.create(create_params)
+  end
 
+    private
+    def create_params
+    params.requie(:item).permit(:id, :name, :category, :delivery_cost, :delivery_day, :delivery_origin, :status)
+    end
 end
