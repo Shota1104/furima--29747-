@@ -12,6 +12,6 @@ class ItemsController < ApplicationController
 
     private
     def create_params
-    params.requie(:item).permit(:id, :name, :category, :delivery_cost, :delivery_day, :delivery_origin, :status)
+    params.requie(:item).permit( :category, :delivery_cost, :delivery_day, :delivery_origin, :status, :image)
     end
 end
