@@ -7,18 +7,20 @@ class Item < ApplicationRecord
   belongs_to_active_hash :delivery_day
   has_one_attached :image
 
-  validates :title, :text, :category_id, presence: true
-  validates :category_id, numericality: { other_than: 1 }
+  validates :category_id, presence: true
+  validates :category_id, numericality: { other_than: 0 }
 
-  validates :title, :text, :status, presence: true
-  validates :status_id, numericality: { other_than: 1 }
+  validates :status, presence: true
+  validates :status_id, numericality: { other_than: 0 }
 
-  validates :title, :text, :delivery_cost_id, presence: true
-  validates :delivery_cost_id, numericality: { other_than: 1 }
+  validates :delivery_cost_id, presence: true
+  validates :delivery_cost_id, numericality: { other_than: 0 }
 
-  validates :title, :text, :delivery_origin_id, presence: true
-  validates :delivery_origin_id, numericality: { other_than: 1 }
+  validates :delivery_origin_id, presence: true
+  validates :delivery_origin_id, numericality: { other_than: 0 }
 
-  validates :title, :text, :delivery_day_id, presence: true
-  validates :delivery_day_id, numericality: { other_than: 1 }
+  validates :delivery_day_id, presence: true
+  validates :delivery_day_id, numericality: { other_than: 0 }
+
+ validates_inclusion_of:"price", in: (300..9999999)
 end
