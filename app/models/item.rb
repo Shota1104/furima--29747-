@@ -21,9 +21,5 @@ class Item < ApplicationRecord
     end
   end
 
-  # def 
-  #   image.attached?
-  # end
-
   validates_inclusion_of :price, in: (300..9999999), format: {with: /\A[0-9]+\z/ }
 end

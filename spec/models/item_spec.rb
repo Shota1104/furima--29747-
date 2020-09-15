@@ -32,33 +32,33 @@ RSpec.describe Item, type: :model do
       end
 
       it'カテゴリーが空の時' do
-        @item.category_id = ''
+        @item.category_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not a number")
+        expect(@item.errors.full_messages).to include("Category must be other than 0")
       end
 
       it'状態が空の時' do
-        @item.status_id = ''
+        @item.status_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status is not a number")
+        expect(@item.errors.full_messages).to include("Status must be other than 0")
       end
 
       it'配送料の負担が空の時' do
-        @item.delivery_cost_id = ''
+        @item.delivery_cost_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery cost is not a number")
+        expect(@item.errors.full_messages).to include("Delivery cost must be other than 0")
       end
 
       it'発送元が空の時' do
-        @item.delivery_origin_id = ''
+        @item.delivery_origin_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery origin is not a number")
+        expect(@item.errors.full_messages).to include("Delivery origin must be other than 0")
       end
 
       it'日数が空の時' do
-        @item.delivery_day_id = ''
+        @item.delivery_day_id = 0
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery day is not a number")
+        expect(@item.errors.full_messages).to include("Delivery day must be other than 0")
       end
 
       it'価格が入力されていない時' do
