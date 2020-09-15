@@ -8,7 +8,7 @@ inputPrice.addEventListener('input', function(){
   const price = document.getElementById("price").value;
   tax_price = price/10;
   content.innerHTML = tax_price
-  console.log(content)
+  
   Net_income = (price - tax_price);
   profit.innerHTML = Net_income
   console.log(profit)
