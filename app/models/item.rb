@@ -22,5 +22,5 @@ class Item < ApplicationRecord
   validates :delivery_day_id, presence: true
   validates :delivery_day_id, numericality: { other_than: 0 }
 
- validates_inclusion_of:"price", in: (300..9999999)
+ validates_inclusion_of :price, in: (300..9999999)
 end

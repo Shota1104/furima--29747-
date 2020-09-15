@@ -11,7 +11,7 @@ before_action :move_to_sign_in, except: [:index]
 
   def create
     @item = Item.new(create_params)
-    if item.save
+    if @item.save
       redirect_to root_path
     else
       redirect_to new_item_path
