@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 before_action :move_to_sign_in, except: [:index]
-before_action :set_item, only: [:edit, :show, :update]
+
+before_action :set_item, only: [:edit, :show, :update, :destroy]
+
 
   def index
     @item = Item.all.order("created_at DESC")
