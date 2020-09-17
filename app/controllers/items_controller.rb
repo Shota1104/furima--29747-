@@ -22,7 +22,7 @@ before_action :set_item, only: [:edit, :show, :update, :destroy]
   end
 
   def update
-    if @item.update!(update_params)
+    if @item.update(update_params)
        redirect_to item_path
     else
        render :show
