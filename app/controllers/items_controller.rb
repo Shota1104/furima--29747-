@@ -1,6 +1,8 @@
 class ItemsController < ApplicationController
 before_action :move_to_sign_in, except: [:index]
+
 before_action :set_item, only: [:edit, :show, :update, :destroy]
+
 
   def index
     @item = Item.all.order("created_at DESC")
@@ -22,11 +24,13 @@ before_action :set_item, only: [:edit, :show, :update, :destroy]
   def update
     @item.update!(update_params)
     redirect_to item_path
+
   end
 
   def destroy
     @item.delete
     redirect_to root_path
+
   end
 
     private
