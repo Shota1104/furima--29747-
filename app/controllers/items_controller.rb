@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
 before_action :move_to_sign_in, except: [:index]
+before_action :set_item, only: [:edit, :show, :update]
 
   def index
     @item = Item.all.order("created_at DESC")
@@ -19,16 +20,13 @@ before_action :move_to_sign_in, except: [:index]
   end
 
   def show
-    @item = Item.find(params[:id])
     @user = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
     item.update!(update_params)
     redirect_to item_path
   end
@@ -42,6 +40,10 @@ before_action :move_to_sign_in, except: [:index]
       params.required(:item).permit(:image, :name, :explanation, :category_id, :status_id, :delivery_cost_id, :delivery_origin_id, :delivery_day_id, :price).merge(user_id: current_user.id)
     end
 
+    def set_item
+    @item = Item.find(params[:id])
+    end
+    
     def move_to_sign_in
       unless user_signed_in?
         redirect_to new_user_session_path
