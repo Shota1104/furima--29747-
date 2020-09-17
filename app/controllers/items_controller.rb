@@ -27,7 +27,7 @@ before_action :set_item, only: [:edit, :show, :update]
   end
 
   def update
-    item.update!(update_params)
+    @item.update!(update_params)
     redirect_to item_path
   end
 
