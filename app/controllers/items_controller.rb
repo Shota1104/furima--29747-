@@ -23,9 +23,23 @@ before_action :move_to_sign_in, except: [:index]
     @user = Item.find(params[:id])
   end
 
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    item = Item.find(params[:id])
+    item.update!(update_params)
+    redirect_to item_path
+  end
+
     private
     def create_params
     params.required(:item).permit(:image, :name, :explanation, :category_id, :status_id, :delivery_cost_id, :delivery_origin_id, :delivery_day_id, :price).merge(user_id: current_user.id)
+    end
+
+    def update_params
+      params.required(:item).permit(:image, :name, :explanation, :category_id, :status_id, :delivery_cost_id, :delivery_origin_id, :delivery_day_id, :price).merge(user_id: current_user.id)
     end
 
     def move_to_sign_in
