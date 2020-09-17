@@ -20,6 +20,13 @@ before_action :move_to_sign_in, except: [:index]
 
   def show
     @item = Item.find(params[:id])
+    @user = Item.find(params[:id])
+  end
+
+  def edit
+  end
+
+  def destroy
   end
 
     private
