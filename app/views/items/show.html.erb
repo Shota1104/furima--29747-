@@ -23,7 +23,7 @@
         (税込) 送料込み
       </span>
     </div>
-
+      <%# <%ログインユーザーのみ編集と削除可能。他のユーザーは購入画面のみ表示%> 
     <% if user_signed_in? && current_user.id == @item.user_id %>
       <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
       <p class='or-text'>or</p>
