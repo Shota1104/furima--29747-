@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 root "items#index"
 resources :uesrs, only: [:index, :new, :create,:delete, :show]
 resources :items
+resources :buyer, only: [:create]
+
 end
