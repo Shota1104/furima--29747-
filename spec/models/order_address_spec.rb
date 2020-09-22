@@ -10,7 +10,7 @@ RSpec.describe OrderAddresses, type: :model do
       @order = FactoryBot.build(:order_addresses, user_id: buyer.id, item_id: item.id)
       sleep(1)
     end
-  # end
+  
     context '商品購入がうまくいくとき' do
       it'token, order_addresses, user_id, item_id, num, prefectures_id, city, :area, building, phoneがあれば登録できる' do
         expect(@order).to be_valid
@@ -60,8 +60,14 @@ RSpec.describe OrderAddresses, type: :model do
         expect(@order.errors.full_messages).to include("Phone can't be blank")
       end
 
-      it'電話番号が11桁以上のとき'do
+      it'電話番号が11桁以上のとき' do
         @order.phone = '12345678901234'
+        @order.invalid?
+        expect(@order.errors.full_messages).to include("Phone is invalid")
+      end
+
+      it'電話番号にハイフンがあるとき' do
+        @order.phone = '090-1111'
         @order.invalid?
         expect(@order.errors.full_messages).to include("Phone is invalid")
       end

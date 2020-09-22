@@ -2,12 +2,11 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @items = Item.all
     @item = Item.find(params[:item_id])
     @order = OrderAddresses.new
     if current_user.id == @item.user_id || @item.order.present? 
       redirect_to root_path
-     end
+    end
     @order = Order.new 
   end
 
@@ -17,10 +16,10 @@ class OrdersController < ApplicationController
     if @order.valid?
       pay_item
       @order.save
-      # @order.update(current_user.id)
       return redirect_to root_path
-    end
+    else
       render "index"
+    end
     
   end
 
