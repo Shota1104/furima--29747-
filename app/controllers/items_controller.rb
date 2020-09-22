@@ -6,7 +6,7 @@ before_action :set_item, only: [:edit, :show, :update, :destroy]
 
   def index
     @item = Item.all.order("created_at DESC")
-  end
+    end
 
   def new
     @item = Item.new
@@ -25,7 +25,7 @@ before_action :set_item, only: [:edit, :show, :update, :destroy]
     if @item.update(update_params)
        redirect_to item_path
     else
-       render :show
+       render :edit
     end
   end
 
