@@ -5,10 +5,10 @@ RSpec.describe Order, type: :model do
     before do
       @order = FactoryBot.build(:order)
     end
-  end
+  # end
     context '商品購入がうまくいくとき' do
       it'token, order_addresses, user_id, item_id, num, prefectures_id, city, :area, building, phoneがあれば登録できる' do
-        expect(@order).to be_valid
+
       end
     end
 
@@ -38,4 +38,5 @@ RSpec.describe Order, type: :model do
       it'電話番号が11桁以内のとき'do
       end
     end
+  end
 end
