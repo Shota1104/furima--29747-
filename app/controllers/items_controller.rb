@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-before_action :move_to_sign_in, except: [:index]
+before_action :move_to_sign_in, except: [:index, :show]
 
 before_action :set_item, only: [:edit, :show, :update, :destroy]
 
