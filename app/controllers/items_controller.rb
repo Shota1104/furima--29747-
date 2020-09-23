@@ -37,6 +37,7 @@ before_action :set_item, only: [:edit, :show, :update, :destroy]
     end
   end
 
+  
   private
   def create_params
     params.required(:item).permit(:image, :name, :explanation, :category_id, :status_id, :delivery_cost_id, :delivery_origin_id, :delivery_day_id, :price).merge(user_id: current_user.id)
